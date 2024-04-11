@@ -467,10 +467,10 @@ if __name__ == "__main__":
                            [True, False, False, True, True]]
 
     # poses_types
-    pose_types = ["PA", "V1", "V2", "Ver", "Lat"]
+    pose_types = ["PA", "AP", "V1", "V2", "Ver", "Lat"]
 
-    c_arm_tilt_pose_types = [0.0, 30.0, -25.0, 0.0, 0.0]
-    c_arm_orbital_pose_types = [0.0, 30.0, -45.0, 35.0, 90.0]
+    c_arm_tilt_pose_types = [0.0, 180.0, -30.0, 25.0, 0.0, 0.0]
+    c_arm_orbital_pose_types = [0.0, 0.0, -30.0, 45.0, -35.0, -90.0]
 
     # multiple runs with varying dofs and pose types
     t1 = time.time()
