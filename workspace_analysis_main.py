@@ -80,30 +80,30 @@ def get_random_joint_values():
                   'table_vert': 0.0, 'table_trend': 0.0, 'table_tilt': 0.0, 'table_long': 0.0, 'table_trans': 0.0}
 
     if C_ARM_LAT:
-        out_joints['c_arm_lat'] = round(np.random.uniform(low=C_ARM_LAT_RANGE[0], high=C_ARM_LAT_RANGE[1]), 2)
+        out_joints['c_arm_lat'] = round((np.random.randint(low=C_ARM_LAT_RANGE[0]*100, high=C_ARM_LAT_RANGE[1]*100 + 1))/100, 2)
     if C_ARM_VERT:
-        out_joints['c_arm_vert'] = round(np.random.uniform(low=C_ARM_VERT_RANGE[0], high=C_ARM_VERT_RANGE[1]), 2)
+        out_joints['c_arm_vert'] = round((np.random.randint(low=C_ARM_VERT_RANGE[0]*100, high=C_ARM_VERT_RANGE[1]*100 + 1))/100, 2)
     if C_ARM_WIGWAG:
         out_joints['c_arm_wigwag'] = float(np.random.randint(low=C_ARM_WIGWAG_RANGE[0],
                                                              high=int(C_ARM_WIGWAG_RANGE[1] + 1)))
     if C_ARM_HORZ:
-        out_joints['c_arm_horz'] = round(np.random.uniform(low=C_ARM_HORZ_RANGE[0], high=C_ARM_HORZ_RANGE[1]), 2)
+        out_joints['c_arm_horz'] = round((np.random.randint(low=C_ARM_HORZ_RANGE[0]*100, high=C_ARM_HORZ_RANGE[1]*100 + 1))/100, 2)
     if C_ARM_TILT:
         out_joints['c_arm_tilt'] = float(np.random.randint(low=C_ARM_TILT_RANGE[0], high=int(C_ARM_TILT_RANGE[1] + 1)))
     if C_ARM_ORB:
         out_joints['c_arm_orb'] = float(np.random.randint(low=C_ARM_ORB_RANGE[0], high=int(C_ARM_ORB_RANGE[1] + 1)))
 
     if TABLE_VERT:
-        out_joints['table_vert'] = round(np.random.uniform(low=TABLE_VERT_RANGE[0], high=TABLE_VERT_RANGE[1]), 2)
+        out_joints['table_vert'] = round((np.random.randint(low=TABLE_VERT_RANGE[0]*100, high=TABLE_VERT_RANGE[1]*100 + 1))/100, 2)
     if TABLE_TREND:
         out_joints['table_trend'] = float(np.random.randint(low=TABLE_TREND_RANGE[0],
                                                             high=int(TABLE_TREND_RANGE[1] + 1)))
     if TABLE_TILT:
         out_joints['table_tilt'] = float(np.random.randint(low=TABLE_TILT_RANGE[0], high=int(TABLE_TILT_RANGE[1] + 1)))
     if TABLE_LONG:
-        out_joints['table_long'] = round(np.random.uniform(low=TABLE_LONG_RANGE[0], high=TABLE_LONG_RANGE[1]), 2)
+        out_joints['table_long'] = round((np.random.randint(low=TABLE_LONG_RANGE[0]*100, high=TABLE_LONG_RANGE[1]*100 + 1))/100, 2)
     if TABLE_TRANS:
-        out_joints['table_trans'] = round(np.random.uniform(low=TABLE_TRANS_RANGE[0], high=TABLE_TRANS_RANGE[1]), 2)
+        out_joints['table_trans'] = round((np.random.randint(low=TABLE_TRANS_RANGE[0]*100, high=TABLE_TRANS_RANGE[1]*100 + 1))/100, 2)
 
     return out_joints
 
@@ -168,17 +168,17 @@ def check_end_pose_collision(c_arm_lateral, c_arm_vertical, c_arm_wigwag, c_arm_
 
 
 def generate_monte_carlo_poses(num_of_samples=100000, out_dir="./out", out_file="./out.csv", collision_free=False,
-                               c_arm_lat_range=(-0.5, 0.5000001),
-                               c_arm_vert_range=(0, 0.46000001),
-                               c_arm_wigwag_range=(-10, 10.000001),
-                               c_arm_horz_range=(0, 0.15000001),
+                               c_arm_lat_range=(-0.5, 0.5),
+                               c_arm_vert_range=(0, 0.46),
+                               c_arm_wigwag_range=(-10, 10),
+                               c_arm_horz_range=(0, 0.15),
                                c_arm_tilt_range=(0, 0),
                                c_arm_orb_range=(0, 0),
-                               table_vert_range=(0, 0.36000001),
-                               table_trend_range=(-30, 30.000001),
-                               table_tilt_range=(-20, 20.000001),
-                               table_long_range=(0, 0.7000001),
-                               table_trans_range=(-0.13, 0.13000001)):
+                               table_vert_range=(0, 0.36),
+                               table_trend_range=(-30, 30),
+                               table_tilt_range=(-20, 20),
+                               table_long_range=(0, 0.7),
+                               table_trans_range=(-0.13, 0.13)):
     global C_ARM_LAT_RANGE
     global C_ARM_VERT_RANGE
     global C_ARM_WIGWAG_RANGE
@@ -197,8 +197,8 @@ def generate_monte_carlo_poses(num_of_samples=100000, out_dir="./out", out_file=
     C_ARM_VERT_RANGE = c_arm_vert_range
     C_ARM_WIGWAG_RANGE = c_arm_wigwag_range
     C_ARM_HORZ_RANGE = c_arm_horz_range
-    C_ARM_TILT_RANGE = c_arm_tilt_range  # (-90, 270.000001)  # original range
-    C_ARM_ORB_RANGE = c_arm_orb_range  # (-100, 100.000001)  # original range
+    C_ARM_TILT_RANGE = c_arm_tilt_range  # (-90, 270)  # original range
+    C_ARM_ORB_RANGE = c_arm_orb_range  # (-100, 100)  # original range
 
     TABLE_VERT_RANGE = table_vert_range
     TABLE_TREND_RANGE = table_trend_range
