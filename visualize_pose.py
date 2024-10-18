@@ -5,19 +5,19 @@ import vedo
 
 if __name__ == "__main__":
     # c-arm joint values
-    c_arm_lateral = 0.523936  # c-arm lateral --> -0.25 to 0.55
-    c_arm_vertical = 0.151159  # c-arm vertical --> 0 to 0.46
-    c_arm_wigwag = -9.981029  # c-arm wigwag --> -10 to 10
-    c_arm_horizontal = 0.124079  # c-arm horizontal --> 0 to 0.15
+    c_arm_lateral = 0.52  # c-arm lateral --> -0.25 to 0.55
+    c_arm_vertical = 0.15  # c-arm vertical --> 0 to 0.46
+    c_arm_wigwag = -9  # c-arm wigwag --> -10 to 10
+    c_arm_horizontal = 0.12  # c-arm horizontal --> 0 to 0.15
     c_arm_tilt = 30  # c-arm tilt --> -90 to 270
     c_arm_orbital = 30  # c-arm orbital --> -100 to 100
 
     # table joint values
-    table_vertical = 0.160316  # table vertical --> 0 to 0.36
+    table_vertical = 0.16  # table vertical --> 0 to 0.36
     table_trend = 0  # table trend --> -30 to 30
     table_tilt = 0  # table tilt --> -20 to 20
     table_longitudinal = 0  # table longitudinal --> 0 to 0.7
-    table_transverse = -0.111679  # table vertical --> -0.13 to 0.13
+    table_transverse = -0.11  # table vertical --> -0.13 to 0.13
 
     # collision detection
     # 3d point clouds and meshes path
