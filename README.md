@@ -75,27 +75,33 @@ C-arm and table initial pose is assumed such that a vertical line passes through
 - [visualize_pose.py](visualize_pose.py): Python code to visualize a pose. Change joint values to your desired values.
 
 ### Workspace
+- [workspace_analysis_main.py](workspace_analysis_main.py): generate random poses across the workspace and sample 5 cm x 5 cm x 5 cm boxes for performing workspace analysis
+  - Inputs - to select different DOF setups: `vary_dofs`, `c_arm_joints_enable`, and `table_joints_enable`
+  - Inputs - to select different interventional configurations: `pose_types`, `c_arm_tilt_pose_types`, and `c_arm_orbital_pose_types`
+  - Outputs: random poses and sampled workspace (csv, html, metadata text files) for varying DOF setups for different interventional configurations  
+
+### Target poses generation
+- [workspace_gen_poses_main.py](workspace_gen_poses_main.py): generate random collision-free poses across the 7 DOF setup for different interventional configurations
+  - Inputs:
+    - `data_dir`: root directory of outputs obtained in the above step
+    - `max_rand_poses_per_box`: maximum number of random collision-free poses to be selected per box. Configured to 10 in this study.
+  - Outputs:csv file with target poses, one per interventional configuration.
+
+- Target poses for 7 DOF setup
+ 
+  Projection | No. of target poses
+  --- | ---
+  AP | 17,292
+  PA | 17,278
+  V1 | 16,583
+  V2 | 42,610
+  Ver | 18,733
+  Lat | 26,717
+
+### Inverse Kinematics
+- [inverse_kinematics_main.py](inverse_kinematics_main.py): Inverse kinematics of target poses
 - 
 
-## Folders and files 
-- 3d_inputs: 3D watertight meshes and pointcloud files (for collision detection)
-- MyTools: python scripts
-    - gen_poses_main.py: code to generate random initial and target collision free poses
-        - Random poses were generated for two configuration. 1) C-arm (6 dofs) + Table (2 dofs); 2) C-arm (6 dofs) + Table (3 dofs). For each configuration,
-            - Generated initial and target poses = 120,000
-            - Initial pose = PA; Target pose = PA; generated samples = 15,000
-            - Initial pose = AP; Target pose = AP; generated samples = 15,000
-            - Initial pose = V1; Target pose = V1; generated samples = 15,000
-            - Initial pose = V2; Target pose = V2; generated samples = 15,000
-            - Initial pose = Ver; Target pose = Ver; generated samples = 15,000
-            - Initial pose = Lat; Target pose = Lat; generated samples = 15,000
-            - Initial pose = V1; Target pose = V2; generated samples = 15,000
-            - Initial pose = V2; Target pose = V1; generated samples = 15,000
-    
-    - read_workspace_boxes.py: script to read workspace boxes analysis metadata.
 
-- workspace_analysis_main.py: Main code to generate workspace analysis files with varying dofs.
-    - Imports necessary code from other files such as transformation_mats.py, position_plot.py, and workspace_sampling.py files.
-- visualize_pose.py: Code to visualize collision detection for a custom joint values.
-
-
+## Acknowledgement
+This study was enabled in part by computational resources provided by Calcul Québec [(calculquebec.ca)](calculquebec.ca) and the Digital Research Alliance of Canada [(alliancecan.ca)](alliancecan.ca).
