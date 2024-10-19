@@ -5,7 +5,7 @@ In this project, C-arm and patient table combined setup with higher degrees of f
 
 Forward kinematics for this setup was solved using DH parameters. Random joint configurations were selected within the joint limits to calculate the target pose and perform workspace analysis. Target pose is the pose of C-arm end-effector w.r.t table end-effector i.e., pose of C-arm w.r.t the patient on the table. Collisions between C-arm and table will occur for many joint configurations, this is detected by developing 3D meshes and point cloud representing our setup and identifying any intersections between these C-arm and table 3D objects. Lastly, a numerical iterative inverse kinematics was performed to analyze the collision-free workspace reachability with numerical solution compared to the actual reachability.
 
-**For collision-free workspace results and further details about our setup, please refer to our paper (to be published).**
+**For collision-free workspace results and further details about our setup, please refer to our paper (to be published - TODO: paper link).**
 
 ## C-arm Joints
 Based on GE Healtcare's [OEC 3D isocentric C-arm](https://www.gehealthcare.com/products/surgical-imaging/oec-3d)
@@ -43,7 +43,18 @@ C-arm and table initial pose is assumed such that a vertical line passes through
 --- | --- | ---
 
 ## Code
+
+### Requirements
+#### Python
 - Install pip packages provided in requirements.txt file
+
+#### MatLab (R2023a)
+- MATLAB                                                Version 9.14        (R2023a)
+- Simulink                                              Version 10.7        (R2023a)
+- Robotics System Toolbox                               Version 4.2         (R2023a)
+- Signal Processing Toolbox                             Version 9.2         (R2023a)
+- Simscape                                              Version 5.5         (R2023a)
+- Simscape Multibody                                    Version 7.7         (R2023a) 
   
 ### Forward Kinematics
 - [Scripts/random_c_arm_table_joints_generate_11dofs.ipynb](Scripts/random_c_arm_table_joints_generate_11dofs.ipynb): to generate random joint configurations for 11 DOF
