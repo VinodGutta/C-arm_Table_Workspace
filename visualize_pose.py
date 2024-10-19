@@ -99,6 +99,3 @@ if __name__ == "__main__":
     plt = vedo.Plotter()
     plt.show(table_top_mesh_cpy, table_body_mesh_cpy, table_wheels_base_mesh_cpy, c_arm_pc_cpy, axes=1).close()
     # sys.exit()
-
-
-
