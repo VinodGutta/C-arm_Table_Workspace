@@ -100,8 +100,12 @@ C-arm and table initial pose is assumed such that a vertical line passes through
 
 ### Inverse Kinematics
 - [inverse_kinematics_main.py](inverse_kinematics_main.py): Inverse kinematics of target poses
-- 
-
+  - Inputs:
+      - `num_of_mp_threads`: number of parallel threads
+      - `out_dir`: output directory path
+      - `input_csv_path`: csv file with target poses (output from the above step)
+      - `opt_jnts`: list of joints to solve. Other joints are configured to their initial pose. E.g. `['c_arm_lat', 'c_arm_vert', 'c_arm_wigwag', 'c_arm_horz', 'table_vert', 'table_long', 'table_trans']`
+  - Outputs: csv file with inverse kinematics results
 
 ## Acknowledgement
 This study was enabled in part by computational resources provided by Calcul Québec [(calculquebec.ca)](calculquebec.ca) and the Digital Research Alliance of Canada [(alliancecan.ca)](alliancecan.ca).
