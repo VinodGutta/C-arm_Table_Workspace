@@ -64,7 +64,7 @@ def ik_objective_fn(x, opt_jnts, target_pos: np.ndarray, target_rot_zyx: np.ndar
                     axis_rot_error(target_rot_zyx[1], out_R_zyx[1]),
                     axis_rot_error(target_rot_zyx[2], out_R_zyx[2])]
     rot_err = norm(rot_abs_diff, ord=2)
-    err = pos_err + rot_err
+    err = (pos_err**2) + (rot_err**2)
     
     return err
 
@@ -145,7 +145,7 @@ def get_random_joint_values(jnts, jnts_bounds):
         if jnt == 'c_arm_wigwag':
             out.append(float(np.random.randint(low=jnts_bounds[idx][0], high=int(jnts_bounds[idx][1] + 1))))
         else:
-            out.append(round((np.random.randint(low=jnts_bounds[idx][0]*100, high=jnts_bounds[idx][1]*100 + 1))/100, 2))
+            out.append(round((np.random.randint(low=jnts_bounds[idx][0]*1000, high=jnts_bounds[idx][1]*1000 + 1))/1000, 3))
 
     return out
 
@@ -167,7 +167,7 @@ def inverse_kinematics(process_idx, opt_jnts, opt_jnts_bnds, c_arm_tilt, c_arm_o
     # max restarts
     max_rnd_cfgs = 100
     max_iterations = 1000
-    tol = 1e-6
+    tol = 1e-9
 
     # collision detection
     # 3d point clouds and meshes path
@@ -230,8 +230,8 @@ def inverse_kinematics(process_idx, opt_jnts, opt_jnts_bnds, c_arm_tilt, c_arm_o
             ik_res_jnts['c_arm_tilt'] = c_arm_tilt
             ik_res_jnts['c_arm_orb'] = c_arm_orb
             for idx, jnt in enumerate(opt_jnts):
-                ik_res_jnts[jnt] = round(ik_res.x[idx], 2)
-            ik_res_jnts['c_arm_wigwag'] = round(ik_res_jnts['c_arm_wigwag'], 0)
+                ik_res_jnts[jnt] = round(ik_res.x[idx], 5)
+            ik_res_jnts['c_arm_wigwag'] = round(ik_res_jnts['c_arm_wigwag'], 2)
             
             # collision check
             collision_deteceted = check_end_pose_collision(c_arm_lateral=ik_res_jnts['c_arm_lat'],
